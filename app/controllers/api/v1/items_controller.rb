@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module API
+module Api
   module V1
-    class TodosController < ApplicationController
+    class ItemsController < ApplicationController
     end
   end
 end
