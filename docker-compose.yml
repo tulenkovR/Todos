@@ -1,0 +1,10 @@
+postgresql:
+  image: postgres:9.6
+  ports:
+  - 5430:5432
+  environment:
+  - PGDATA=/postgresql
+  - PG_USER=postgres
+  - PG_PASSWORD=blog_pg
+  volumes:
+  - ./tmp/data/postgresql:/postgresql

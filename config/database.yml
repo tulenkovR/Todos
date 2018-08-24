@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5430
+  username: postgres
+  password: blog_pg
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: todos_development
+
+test:
+  <<: *default
+  database: todos_test
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
