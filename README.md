@@ -1,5 +1,9 @@
 # Todos API
+
 [![Build Status](https://travis-ci.org/tulenkovR/Todos.svg?branch=master)](https://travis-ci.org/tulenkovR/Todos)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8d4fc121874ef9e2608a/maintainability)](https://codeclimate.com/github/tulenkovR/Todos/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8d4fc121874ef9e2608a/test_coverage)](https://codeclimate.com/github/tulenkovR/Todos/test_coverage)
+
 ### API Endpoints
 #### Our API will expose the following RESTful endpoints:
 
