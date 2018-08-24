@@ -1,5 +1,5 @@
 # Todos API
-
+[![Build Status](https://travis-ci.org/tulenkovR/Todos.svg?branch=master)](https://travis-ci.org/tulenkovR/Todos)
 ### API Endpoints
 #### Our API will expose the following RESTful endpoints:
 
