@@ -17,7 +17,7 @@
 | PUT /todos/:id/items	  | Update a todo item         |
 | DELETE /todos/:id/items | Delete a todo item         |
 
-###Defined a custom vendor media type: 
+### Defined a custom vendor media type: 
 - application/vnd.todos.{version_number}+json 
 
 Example: 
