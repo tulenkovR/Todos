@@ -3,12 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Todos API', type: :request do
-
-  let!(:todos) { create_list(:todo, 10) }
+  let(:user) { create(:user) }
+  let!(:todos) { create_list(:todo, 10, created_by: user.id) }
   let(:todo_id) { todos.first.id }
+  let(:headers) { valid_headers }
 
   describe 'GET /api/todos' do
-    before { get '/api/todos' }
+    before { get '/api/todos', headers: headers }
 
     it 'returns todos' do
       expect(json).not_to be_empty
@@ -21,7 +22,7 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'GET /api/todos/:id' do
-    before { get "/api/todos/#{todo_id}" }
+    before { get "/api/todos/#{todo_id}", headers: headers }
 
     context 'record exists' do
 
@@ -49,10 +50,12 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'POST /api/todos' do
-    let(:valid_attr) { { todo: { title: 'Go away', created_by: '1' } } }
+    let(:valid_attr) do
+      { title: 'Go away', created_by: user.id.to_s }.to_json
+    end
 
     context 'request is valid' do
-      before { post '/api/todos', params: valid_attr }
+      before { post '/api/todos', params: valid_attr, headers: headers }
 
       it 'creates todo' do
         expect(json['title']).to eq('Go away')
@@ -64,11 +67,11 @@ RSpec.describe 'Todos API', type: :request do
     end
 
     context 'request is invalid' do
-      let(:valid_attr) { { todo: { title: 'Go away', created_by: '1' } } }
-      before { post '/api/todos', params: { todo: { title: 'Spec' } } }
+      let(:invalid_attr) { { todo: { title: '' } }.to_json }
+      before { post '/api/todos', params: invalid_attr, headers: headers }
 
       it 'returns not the found record ' do
-        expect(response.body).to match(/Validation failed: Created by can't be blank/)
+        expect(json['message']).to match(/Validation failed: Title can't be blank/)
       end
 
       it 'returns status code 422' do
@@ -79,10 +82,10 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'PUT /api/todos/:id' do
-    let(:valid_attr) { { todo: { title: 'Go away' } } }
+    let(:valid_attr) { { todo: { title: 'Go away' } }.to_json }
 
     context 'record is exists' do
-      before { put "/api/todos/#{todo_id}", params: valid_attr }
+      before { put "/api/todos/#{todo_id}", params: valid_attr, headers: headers }
 
       it 'update the record' do
         expect(response.body).to be_empty
@@ -95,7 +98,7 @@ RSpec.describe 'Todos API', type: :request do
   end
 
   describe 'DELETE /api/todos/:id' do
-    before { delete "/api/todos/#{todo_id}" }
+    before { delete "/api/todos/#{todo_id}", headers: headers }
 
     it 'return status code 204' do
       expect(response).to have_http_status(204)
