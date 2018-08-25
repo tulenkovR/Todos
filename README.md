@@ -28,3 +28,5 @@ Example:
 - Accept: application/vnd.todos.v1+json 
 - Accept: application/vnd.todos.v2+json 
 
+### Pagination
+- Add to request page==(number page), each page returns 20 records
