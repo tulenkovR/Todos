@@ -25,3 +25,5 @@
 .env
 /coverage
 /.idea
+.ruby-gemset
+.ruby-version

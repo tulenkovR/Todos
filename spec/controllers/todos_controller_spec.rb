@@ -7,7 +7,7 @@ RSpec.describe 'Todos API', type: :request do
   let!(:todos) { create_list(:todo, 10) }
   let(:todo_id) { todos.first.id }
 
-  describe 'GET /todos' do
+  describe 'GET /api/todos' do
     before { get '/api/todos' }
 
     it 'returns todos' do
@@ -20,7 +20,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
-  describe 'GET /todos/:id' do
+  describe 'GET /api/todos/:id' do
     before { get "/api/todos/#{todo_id}" }
 
     context 'record exists' do
@@ -48,7 +48,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
-  describe 'POST /todos' do
+  describe 'POST /api/todos' do
     let(:valid_attr) { { todo: { title: 'Go away', created_by: '1' } } }
 
     context 'request is valid' do
@@ -78,7 +78,7 @@ RSpec.describe 'Todos API', type: :request do
 
   end
 
-  describe 'PUT /todos/:id' do
+  describe 'PUT /api/todos/:id' do
     let(:valid_attr) { { todo: { title: 'Go away' } } }
 
     context 'record is exists' do
@@ -94,7 +94,7 @@ RSpec.describe 'Todos API', type: :request do
     end
   end
 
-  describe 'DELETE /todos/:id' do
+  describe 'DELETE /api/todos/:id' do
     before { delete "/api/todos/#{todo_id}" }
 
     it 'return status code 204' do
