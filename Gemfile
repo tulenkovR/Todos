@@ -13,17 +13,19 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rack-cors'
 gem 'rails', '~> 5.2.1'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails'
 end
 
 group :test do
+  gem 'codeclimate-test-reporter', '~> 1.0.0'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'shoulda-matchers'
   gem 'simplecov'
 end
