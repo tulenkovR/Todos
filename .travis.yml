@@ -5,12 +5,12 @@ env:
 - "RAILS_ENV=test"
 before_install:
 - gem update --system --no-document
-- gem install bundler -v 1.16.4 --no-document
+- gem install bundler -v 1.16.3 --no-document
 before_script:
 - RAILS_ENV=test bin/rake db:create db:migrate
 addons:
   postgresql: "9.6"
   code_climate:
-    repo_token: ecbb04ca6a2895f63b47499fe03fd0210537e07df6bf9232e9bcdf15d064e677
+    repo_token: 8c21fe8e5f29c529b6e9f6cf1b4c3008983b5662b3741afd2e66ed2d3c05334e
 after_success:
 - bundle exec codeclimate-test-reporter
