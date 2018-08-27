@@ -1,11 +1,13 @@
-language: ruby 2.5.1
+language: ruby
 services:
 - postgresql
 env:
 - "RAILS_ENV=test"
+rvm:
+- 2.5.1
 before_install:
 - gem update --system --no-document
-- gem install bundler -v 1.16.1 --no-document
+- gem install bundler -v 1.16.4 --no-document
 before_script:
 - RAILS_ENV=test bin/rake db:create db:migrate
 addons:
