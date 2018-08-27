@@ -4,7 +4,6 @@ services:
 env:
 - "RAILS_ENV=test"
 before_install:
-- gem install rails
 - gem update --system --no-document
 - gem install bundler -v 1.16.4 --no-document
 before_script:
