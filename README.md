@@ -5,8 +5,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8d4fc121874ef9e2608a/test_coverage)](https://codeclimate.com/github/tulenkovR/Todos/test_coverage)
 
 ### Running application on Heroku
-#### https://task-backend.herokuapp.com
-#### Сreated user: email:test@test.com password: roman123
+#### https://task-backend.herokuapp.com/api/todos
+#### Сreated user: email:test@test.com, password: roman123
 
 ### API Endpoints
 #### Our API will expose the following RESTful endpoints:
