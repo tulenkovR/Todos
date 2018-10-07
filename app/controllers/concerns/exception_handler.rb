@@ -16,6 +16,7 @@ module ExceptionHandler
     rescue_from ExceptionHandler::AuthenticationError, with: :unauthorized_request
     rescue_from ExceptionHandler::MissingToken, with: :four_twenty_two
     rescue_from ExceptionHandler::InvalidToken, with: :four_twenty_two
+    rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
     # Return 404 - Not Found
     #
@@ -28,6 +29,7 @@ module ExceptionHandler
     rescue_from ActionController::ParameterMissing do |e|
       render json: { error: e.message }, status: :bad_request
     end
+
   end
 
   private
@@ -40,5 +42,9 @@ module ExceptionHandler
   # JSON response with message; Status code 401 - Unauthorized
   def unauthorized_request(e)
     json_response({ message: e.message }, :unauthorized)
+  end
+
+  def not_authorized
+    render json: { error: 'Unauthorized' }, status: 403
   end
 end

@@ -14,6 +14,8 @@ gem 'puma', '~> 3.11'
 gem 'rack-cors'
 gem 'rails', '~> 5.2.1'
 gem 'will_paginate', '~> 3.1.0'
+gem 'pundit'
+gem 'rack-attack'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
