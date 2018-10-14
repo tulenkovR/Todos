@@ -4,6 +4,7 @@ module Api
   module V1
     class TodosController < ApplicationController
       before_action :set_todo, only: %i[show update destroy]
+      after_action :verify_authorized
 
       def index
         @todos = policy_scope(Todo).paginate(page: params[:page], per_page: 20)
